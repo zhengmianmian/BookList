@@ -1,9 +1,11 @@
 using Backend.Models;
 using Backend.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
@@ -12,6 +14,18 @@ public class UsersController : ControllerBase
 
     public UsersController(UsersService UsersService) =>
         _usersService = UsersService;
+
+    [AllowAnonymous]
+    [Route("authenticate")]
+    [HttpPost]
+    public ActionResult Login([FromBody] User user){
+        var token = _usersService.Authenticate(user.Email, user.Password);
+
+        if(token == null){
+            return Unauthorized();
+        }
+        return Ok(new {token, user});
+    }
 
     [HttpGet]
     public async Task<List<User>> Get() =>
