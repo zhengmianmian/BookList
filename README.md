@@ -31,5 +31,23 @@ PUT http://localhost:8080/api/Users/{id}
 ```
 DELETE http://localhost:8080/api/Users/{id}
 ```
+## React Frontend
+A single booklist app.
 
-
+## Key points
+### Sovle cross origin issue
+In the Program.cs, configure CORS to allow requests from the React frontend.
+```
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        builder => builder
+            .WithOrigins("http://localhost:3000") // React frontend URL
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+```
+Enable CORS
+```
+app.UseCors("AllowReactApp");
+```
