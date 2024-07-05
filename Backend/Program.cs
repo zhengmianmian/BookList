@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<DatabaseSettings>(
     builder.Configuration.GetSection("SimpleAuthDatabase"));
 builder.Services.AddSingleton<UsersService>();
+builder.Services.AddSingleton<BooksService>();
+
 builder.Services.AddControllers();
 
 // Configure jwt auth
@@ -39,8 +41,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    // app.UseSwagger();
+    // app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
