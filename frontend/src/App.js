@@ -1,4 +1,6 @@
 import Navbar from "./components/Navbar";
+import BooksPage from "./pages/BooksPage";
+
 function App() {
   return (
     <div className="App">
@@ -7,6 +9,7 @@ function App() {
       <h1 className="bg-red-200">
         Hello world!
       </h1>
+      <BooksPage/>
     </div>
   );
 }

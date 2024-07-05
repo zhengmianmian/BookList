@@ -32,15 +32,27 @@ builder.Services.AddAuthentication(x =>
 });
 
 
+// Configure CORS to allow requests from the React frontend
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        builder => builder
+            .WithOrigins("http://localhost:3000") // React frontend URL
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// builder.Services.AddEndpointsApiExplorer();
+// builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     // app.UseSwagger();
     // app.UseSwaggerUI();
 }
@@ -49,6 +61,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+// Enable CORS
+app.UseCors("AllowReactApp");
 
 app.MapControllers();
 
