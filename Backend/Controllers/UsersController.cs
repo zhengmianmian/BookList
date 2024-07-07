@@ -16,7 +16,7 @@ public class UsersController : ControllerBase
         _usersService = UsersService;
 
     [AllowAnonymous]
-    [Route("authenticate")]
+    [Route("login")]
     [HttpPost]
     public ActionResult Login([FromBody] User user){
         var token = _usersService.Authenticate(user.Email, user.Password);
@@ -43,7 +43,7 @@ public class UsersController : ControllerBase
 
         return User;
     }
-
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> Post(User newUser)
     {
