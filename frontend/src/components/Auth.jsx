@@ -18,8 +18,8 @@ export function useAuth() {
     const decodedToken = jwtDecode(token);
     isExpired = isTokenExpired(decodedToken);
     user = {
-      _id: decodedToken._id,
-      username: decodedToken.username,
+      _id: decodedToken.nameid,
+      email: decodedToken.email,
     };
     if (isExpired) setToken(null);
   } catch (err) {

@@ -80,10 +80,9 @@ function BooksPage() {
   const booklist = books.map(book => bookItem(book));
   return (
     <div>
-      <div className="p-2 text-center text-4xl">There are {books.length} books in total.</div>
+      <div className="p-2 text-center text-4xl">You have {books.length} books.</div>
       <div className="w-1/4 mx-auto text-xl underline hover:no-underline hover:cursor-pointer" onClick={()=>setDisplay(true)}>Add NEW BOOK?</div>
       {display && (<div className="w-1/4 mx-auto my-2 p-2">
-        <div className="text-right underline hover:no-underline hover:cursor-pointer" onClick={handleAdd}>ADD</div>
         <div>book name: </div>
         <input
             type="text"
@@ -119,6 +118,10 @@ function BooksPage() {
             onChange={(e) => setAuthor(e.target.value)}
             className={inputStyle}
           />
+          <div className="p-2 flex flex-row items-right">
+            <div className="m-2 underline hover:no-underline hover:cursor-pointer" onClick={handleAdd}>ADD</div>
+            <div className="m-2 underline hover:no-underline hover:cursor-pointer" onClick={()=>setDisplay(false)}>CLOSE</div>
+        </div>
       </div>)}
 
       {books.length && (<div className="w-1/3 mx-auto my-4 flex flex-col justify-center">

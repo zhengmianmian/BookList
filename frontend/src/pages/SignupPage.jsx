@@ -15,9 +15,9 @@ function SignupPage(props) {
   }
 
   return (
-    <div >
-      <div>
-        <div className="m-2 p-2 text-4xl">Sign up</div>
+    <div className="flex flex-col justify-center items-center">
+      <div className="w-1/4">
+        <div className="m-2 p-2 text-6xl">Sign up</div>
         <LoginForm buttonText="Sign up" onSubmit={handleSubmit} />
         <p>
           Has an account? <Link to="/login" className="underline hover:no-underline hover:cursor-pointer">Go to login</Link>

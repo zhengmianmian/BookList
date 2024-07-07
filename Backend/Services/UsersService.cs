@@ -41,6 +41,7 @@ public class UsersService
         var tokenKey = Encoding.UTF8.GetBytes(key);
         var tokenDescriptor = new SecurityTokenDescriptor(){
             Subject = new ClaimsIdentity(new Claim[]{
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Email, email),
             }),
             Expires = DateTime.UtcNow.AddHours(1),
