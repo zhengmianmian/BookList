@@ -17,4 +17,8 @@ public class Book
     public string Category { get; set; } = null!;
 
     public string Author { get; set; } = null!;
+    public bool Like { get; set; } = false;
+    
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Owner { get; set; } = null!;
 }

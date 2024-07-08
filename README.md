@@ -1,5 +1,5 @@
-# SimpleAuth
-A simple JWT auth app framework.
+# Booklist
+A simple booklist app that enables you to manage your books and view your friends' favourite books.
 ## Backend Dotnet 8.0 
 Request examples:
  - A user signs in, get the token.

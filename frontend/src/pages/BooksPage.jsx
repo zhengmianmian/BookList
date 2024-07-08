@@ -2,8 +2,11 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import {useAuth} from '../components/Auth'
 import {BOOKS_URL} from '../api/urls.js'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 function BooksPage() {
-  const { token } = useAuth()
+  const { token, user } = useAuth()
   const [books, setBooks] = useState([])
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
@@ -34,7 +37,8 @@ function BooksPage() {
       BookName: name,
       Price: price,
       Category: category,
-      Author: author
+      Author: author,
+      Owner: user._id
     }, {
       headers:{
         Authorization:`Bearer ${token}`
@@ -72,7 +76,8 @@ function BooksPage() {
           <div>Author: {book.author}</div>
         </div>
         <div className="w-1/4 flex flex-col items-center justify-center">
-          <div className="underline hover:no-underline hover:cursor-pointer" onClick={()=>deleteBook(book.id)}>DELETE</div>
+          <div>{book.like? <FavoriteIcon style={{color:'red'}} /> : <FavoriteBorderIcon /> }</div>
+          <div className="mt-2 underline hover:no-underline hover:cursor-pointer" onClick={()=>deleteBook(book.id)}>DELETE</div>
         </div>
       </div>
     )
@@ -124,7 +129,7 @@ function BooksPage() {
         </div>
       </div>)}
 
-      {books.length && (<div className="w-1/3 mx-auto my-4 flex flex-col justify-center">
+      {books.length>0 && (<div className="w-1/3 mx-auto my-4 flex flex-col justify-center">
         {booklist}
       </div>)}
     </div>

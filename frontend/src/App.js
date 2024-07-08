@@ -1,9 +1,10 @@
 import Navbar from "./components/Navbar";
 import BooksPage from "./pages/BooksPage";
-import { Routes, Route, Navigate} from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import {RequiresAuth, RequiresNonAuth} from "../src/components/Auth.jsx"
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx"
+import HomeLayout from "./components/HomeLayout.jsx";
 
 function App() {
   return (
@@ -12,24 +13,17 @@ function App() {
       <Routes>
         <Route 
           path='/'
-          element={<Navigate to="/login" />}
-        />
-        <Route
-          path="/login"
           element={
             <RequiresNonAuth>
-              <LoginPage />
+              <HomeLayout/>
             </RequiresNonAuth>
           }
-        />
-        <Route
-          path="/signup"
-          element={
-            <RequiresNonAuth>
-              <SignupPage/>
-            </RequiresNonAuth>
-          }
-        />
+        >
+          <Route index element={<LoginPage/>}/>
+          <Route path="login" element={<LoginPage/>}/>
+          <Route path="signup" element={<SignupPage/>} />
+        </Route>
+        
         <Route
           path="/books"
           element={
