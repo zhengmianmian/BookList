@@ -1,6 +1,7 @@
 # Booklist
 A simple booklist app that enables you to manage your books and view your friends' favourite books.
 
+This is a practice of jwt auth and bearer tokens.
 ## Key Features
 ### Login and Signup
 
