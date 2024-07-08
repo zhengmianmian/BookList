@@ -13,6 +13,10 @@ function Navbar() {
       <nav className="bg-sky-400 bg-border-gray-200">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-0">
           <div className={unitStyle}><Link to="/books">Booklist</Link></div>
+          <div className='flex'>
+            <div className={unitStyle}><Link to="/others">Others</Link></div>
+          </div>
+
           <div className="flex">
             {isAuthenticated?(<><div className={unitStyle} onClick={handleSignout}>Sign out</div></>):(<>
               <div className={unitStyle}><Link to="/login">Sign in</Link></div>

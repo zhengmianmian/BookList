@@ -25,6 +25,10 @@ public class BooksService
     public async Task<List<Book>> GetAsync() =>
         await _booksCollection.Find(_ => true).ToListAsync();
 
+    // retrive books according to Owner
+    public async Task<List<Book>> GetByOwnerAsync(string ownerId) =>
+        await _booksCollection.Find(x => x.Owner == ownerId).ToListAsync();
+
     public async Task<Book?> GetAsync(string id) =>
         await _booksCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 

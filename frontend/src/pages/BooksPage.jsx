@@ -16,7 +16,11 @@ function BooksPage() {
 
   const inputStyle = "my-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
   const getBooks = async () => {
-    await axios.get(BOOKS_URL)
+    await axios.get(`${BOOKS_URL}/mine/${user._id}`, {
+      headers:{
+        Authorization:`Bearer ${token}`
+      }
+    })
     .then(res => {
       setBooks(res.data)
     })
@@ -51,6 +55,24 @@ function BooksPage() {
       console.error('Error:', error);
     });
   }
+  const clkLike = async (book)=>{
+    await axios.put(`${BOOKS_URL}/${book.id}`, {
+      BookName: book.bookName,
+      Price: book.price,
+      Category: book.category,
+      Author: book.author,
+      Like: !book.like,
+      Owner: user._id
+    }, {
+      headers:{
+        Authorization:`Bearer ${token}`
+      }
+    }).then(()=>{
+      getBooks()
+    }).catch(error => {
+      console.error('Like a book Error:', error);
+    });
+  }
 
   useEffect(() => {
     getBooks()
@@ -76,7 +98,9 @@ function BooksPage() {
           <div>Author: {book.author}</div>
         </div>
         <div className="w-1/4 flex flex-col items-center justify-center">
-          <div>{book.like? <FavoriteIcon style={{color:'red'}} /> : <FavoriteBorderIcon /> }</div>
+          <div className="hover:cursor-pointer" onClick={()=>{ clkLike(book) }}>
+            {book.like? <FavoriteIcon style={{color:'red'}} /> : <FavoriteBorderIcon /> }
+          </div>
           <div className="mt-2 underline hover:no-underline hover:cursor-pointer" onClick={()=>deleteBook(book.id)}>DELETE</div>
         </div>
       </div>

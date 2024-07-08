@@ -5,6 +5,7 @@ import {RequiresAuth, RequiresNonAuth} from "../src/components/Auth.jsx"
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx"
 import HomeLayout from "./components/HomeLayout.jsx";
+import OthersPage from "./pages/OthersPage.jsx";
 
 function App() {
   return (
@@ -29,6 +30,14 @@ function App() {
           element={
             <RequiresAuth>
               <BooksPage/>
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/others"
+          element={
+            <RequiresAuth>
+              <OthersPage/>
             </RequiresAuth>
           }
         />

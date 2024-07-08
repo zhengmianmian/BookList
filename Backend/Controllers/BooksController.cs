@@ -15,10 +15,13 @@ public class BooksController : ControllerBase
     public BooksController(BooksService booksService) =>
         _booksService = booksService;
 
-    [AllowAnonymous]
     [HttpGet]
     public async Task<List<Book>> Get() =>
         await _booksService.GetAsync();
+
+    [HttpGet("mine/{ownerId:length(24)}")]
+    public async Task<List<Book>> GetByOwner(string ownerId) =>
+        await _booksService.GetByOwnerAsync(ownerId);
 
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<Book>> Get(string id)
