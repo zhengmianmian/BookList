@@ -2,7 +2,7 @@ import { useAuth } from '../components/Auth'
 import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
-  const { isAuthenticated, setToken } = useAuth()
+  const { isAuthenticated, setToken, user } = useAuth()
   const unitStyle = "p-4 hover:bg-stone-700 hover:text-sky-400 transition duration-300 hover:cursor-pointer"
   const handleSignout = () => {
     setToken('')
@@ -18,7 +18,9 @@ function Navbar() {
           </div>
 
           <div className="flex">
-            {isAuthenticated?(<><div className={unitStyle} onClick={handleSignout}>Sign out</div></>):(<>
+            {isAuthenticated?(<>
+              <div className={unitStyle}>{user.email}</div>
+              <div className={unitStyle} onClick={handleSignout}>Sign out</div></>):(<>
               <div className={unitStyle}><Link to="/login">Sign in</Link></div>
               <div className={unitStyle}><Link to="/signup">Sign up</Link></div>
             </>)}

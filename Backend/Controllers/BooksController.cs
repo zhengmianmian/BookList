@@ -23,6 +23,10 @@ public class BooksController : ControllerBase
     public async Task<List<Book>> GetByOwner(string ownerId) =>
         await _booksService.GetByOwnerAsync(ownerId);
 
+    [HttpGet("like/{ownerId:length(24)}")]
+    public async Task<List<Book>> GetLike(string ownerId) =>
+        await _booksService.GetLikeAsync(ownerId);
+        
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<Book>> Get(string id)
     {
