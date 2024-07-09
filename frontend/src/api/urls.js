@@ -2,7 +2,7 @@
  * API URLs accessed from various frontend locations
  */
 
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const API_BASE_URL = `${BASE_URL}/api`;
 
 export const BOOKS_URL = `${API_BASE_URL}/Books`;
