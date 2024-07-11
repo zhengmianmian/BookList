@@ -13,6 +13,17 @@ A simple booklist app that enables you to manage your books and view your friend
 Open two terminals, one for backend, the other one for frontend. cd the folder.
 
 **In the Backend folder:**
+
+Create a .env file that looks like
+```
+SIMPLEAUTHDATABASE__CONNECTIONSTRING=[DATABASE_URL]
+SIMPLEAUTHDATABASE__DATABASENAME=[YOUR_DATABASE_NAME]
+SIMPLEAUTHDATABASE__USERSCOLLECTION=Users
+SIMPLEAUTHDATABASE__BOOKSCOLLECTION=Books
+SIMPLEAUTHDATABASE__JWTKEY=[YOUR_JWT_KEY]
+```
+JWT_KEY should be long enough.
+
 To run it:
 ```
 dotnet run
@@ -22,6 +33,12 @@ Enable hot reload:
 dotnet watch run
 ```
 **In the frontend folder**
+
+Create a .env file 
+```
+REACT_APP_BASE_URL=http://localhost:8080
+```
+Store the backend URL. You can use any port for backend.
 
 Install the dependencies first
 ```
