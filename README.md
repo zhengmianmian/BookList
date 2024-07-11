@@ -1,7 +1,37 @@
 # Booklist
 A simple booklist app that enables you to manage your books and view your friends' favourite books.
 
-This is a practice of jwt auth and bearer tokens.
+### Practice
+ - CRUD operations
+ - Connect to mongoDB
+ - JWT auth and bearer tokens
+ - Cross origin issue
+ - Read .env variables
+
+
+## Run the App
+Open two terminals, one for backend, the other one for frontend. cd the folder.
+
+**In the Backend folder:**
+To run it:
+```
+dotnet run
+```
+Enable hot reload:
+```
+dotnet watch run
+```
+**In the frontend folder**
+
+Install the dependencies first
+```
+npm i
+```
+Then start it
+```
+npm start
+```
+
 ## Key Features
 ### Login and Signup
 
