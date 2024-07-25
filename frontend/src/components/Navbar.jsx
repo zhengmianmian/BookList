@@ -1,5 +1,5 @@
 import { useAuth } from '../components/Auth'
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const { isAuthenticated, setToken, user } = useAuth()
