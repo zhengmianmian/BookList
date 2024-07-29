@@ -24,9 +24,7 @@ function Navbar() {
               <div className={unitStyle}><Link to="/login">Sign in</Link></div>
               <div className={unitStyle}><Link to="/signup">Sign up</Link></div>
             </>)}
-            
           </div>
-          
         </div>
       </nav>
     </div>
