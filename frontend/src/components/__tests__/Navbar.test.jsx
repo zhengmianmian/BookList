@@ -12,34 +12,18 @@ describe('Navbar', () => {
     useAuth.mockReturnValue({
       isAuthenticated: false,
       setToken: jest.fn(),
-      user: { email: 'test@example.com' },
+      user: null,
     });
   });
 
-  test('renders Booklist link', () => {
+  test('renders links when not authenticated', () => {
     render(
       <MemoryRouter>
         <Navbar />
       </MemoryRouter>
     );
     expect(screen.getByText('Booklist')).toBeInTheDocument();
-  });
-
-  test('renders Others link', () => {
-    render(
-      <MemoryRouter>
-        <Navbar />
-      </MemoryRouter>
-    );
     expect(screen.getByText('Others')).toBeInTheDocument();
-  });
-
-  test('renders Sign in and Sign up when not authenticated', () => {
-    render(
-      <MemoryRouter>
-        <Navbar />
-      </MemoryRouter>
-    );
     expect(screen.getByText('Sign in')).toBeInTheDocument();
     expect(screen.getByText('Sign up')).toBeInTheDocument();
   });
