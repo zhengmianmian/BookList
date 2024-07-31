@@ -35,7 +35,6 @@ describe('BooksPage', () => {
     
     render(<BooksPage />);
     //npm test -- BooksPage.test.js
-    // await waitFor(() => expect(screen.findByText(/You have 2 books./i)).toBeInTheDocument());
     const text = await screen.findByText("You have 2 books.");
     expect(text).toBeInTheDocument();
     expect(screen.getByText('Name: Book 1')).toBeInTheDocument();
